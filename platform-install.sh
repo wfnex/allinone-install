@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$(id -u)" != "0" ]; then
-   echo "You need to be 'root' dude." 1>&2
+   echo "You need to be 'root' to install platform" 1>&2
    exit 1
 fi
 
