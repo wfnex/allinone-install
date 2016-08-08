@@ -78,15 +78,15 @@ function install_rpm() {
 				rpm -ihv core-1.0.0-1.x86_64.rpm
 			fi
 		fi
-		#check starvpp
-		if [ -d /opt/starvpp ];then
-			echo StarVPP check!
+		#check wfnos
+		if [ -d /opt/wfnos ];then
+			echo WFNOS check!
 		else
-			if [ -f ./starvpp-1.0.0-1.x86_64.rpm ];then
-				rpm -ihv starvpp-1.0.0-1.x86_64.rpm
+			if [ -f ./wfnos-2.1.0-1.x86_64.rpm ];then
+				rpm -ihv wfnos-2.1.0-1.x86_64.rpm
 			else
-				wget https://github.com/wfnex/starvpp/raw/master/starvpp-1.0.0-1.x86_64.rpm
-				rpm -ihv starvpp-1.0.0-1.x86_64.rpm
+				wget https://github.com/wfnex/wfnos/raw/master/wfnos-2.1.0-1.x86_64.rpm
+				rpm -ihv wfnos-2.1.0-1.x86_64.rpm
 			fi
 		fi
 	else
@@ -98,7 +98,7 @@ function uninstall_rpm() {
 	echo uninstall platform will cause application not avaliable, are you sure want uninstall platform?
 	read -s -n1 -p "Press any key to continue ..."
 	echo "\n"
-	rpm -e starvpp --nodeps
+	rpm -e wfnos --nodeps
 	rpm -e core --nodeps
 	rpm -e dipc --nodeps
 	rpm -e stardlls --nodeps
