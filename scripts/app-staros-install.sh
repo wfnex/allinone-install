@@ -49,33 +49,33 @@ function install_rpm() {
 		if [ -d /opt/stardlls ];then
 			echo Stardlls check!
 		else
-			if [ -f ../package/centos/stardlls-1.0.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/stardlls-1.0.0-1.x86_64.rpm
+			if [ -f ./stardlls-1.0.0-1.x86_64.rpm ];then
+				rpm -ihv stardlls-1.0.0-1.x86_64.rpm
 			else
-				wget -P ../package/centos https://github.com/wfnex/stardlls/raw/master/stardlls-1.0.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/stardlls-1.0.0-1.x86_64.rpm
+				wget https://github.com/wfnex/stardlls/raw/master/stardlls-1.0.0-1.x86_64.rpm
+				rpm -ihv stardlls-1.0.0-1.x86_64.rpm
 			fi
 		fi
 		#check dipc
 		if [ -d /opt/dipc ];then
 			echo DIPC check!
 		else
-			if [ -f ../package/centos/dipc-1.1.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/dipc-1.1.0-1.x86_64.rpm
+			if [ -f ./dipc-1.1.0-1.x86_64.rpm ];then
+				rpm -ihv dipc-1.1.0-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/DIPC/raw/master/dipc-1.1.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/dipc-1.1.0-1.x86_64.rpm
+				wget https://github.com/wfnex/DIPC/raw/master/dipc-1.1.0-1.x86_64.rpm
+				rpm -ihv dipc-1.1.0-1.x86_64.rpm
 			fi
 		fi
 		#check core
 		if [ -d /opt/core ];then
 			echo StarCore check!
 		else
-			if [ -f ../package/centos/core-1.0.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/core-1.0.0-1.x86_64.rpm
+			if [ -f ./core-1.0.0-1.x86_64.rpm ];then
+				rpm -ihv core-1.0.0-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/starcore/raw/master/core-1.0.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/core-1.0.0-1.x86_64.rpm
+				wget https://github.com/wfnex/starcore/raw/master/core-1.0.0-1.x86_64.rpm
+				rpm -ihv core-1.0.0-1.x86_64.rpm
 			fi
 		fi
 		#check wfnos
@@ -87,6 +87,16 @@ function install_rpm() {
 			else
 				wget -P ../package/centos/ https://github.com/wfnex/wfnos/raw/master/wfnos-2.1.0-1.x86_64.rpm
 				rpm -ihv ../package/centos/wfnos-2.1.0-1.x86_64.rpm
+			fi
+		fi
+		#check staros
+		if [ -d /opt/staros ];then
+			echo StarOS check!
+		else
+			if [ -f ../package/centos/staros-1.6.0-1.x86_64.rpm ];then
+				rpm -ihv ../package/centos/staros-1.6.0-1.x86_64.rpm
+			else
+				echo no staros rpm!
 			fi
 		fi
 	else
