@@ -60,22 +60,22 @@ function install_rpm() {
 		if [ -d /opt/dipc ];then
 			echo DIPC check!
 		else
-			if [ -f ../package/centos/dipc-1.1.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/dipc-1.1.0-1.x86_64.rpm
+			if [ -f ./dipc-1.2.0-1.x86_64.rpm ];then
+				rpm -ihv dipc-1.2.0-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/DIPC/raw/master/dipc-1.1.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/dipc-1.1.0-1.x86_64.rpm
+				wget https://github.com/wfnex/DIPC/raw/master/dipc-1.2.0-1.x86_64.rpm
+				rpm -ihv dipc-1.2.0-1.x86_64.rpm
 			fi
 		fi
 		#check core
-		if [ -d /opt/core ];then
+		if [ -d /opt/starcore ];then
 			echo StarCore check!
 		else
-			if [ -f ../package/centos/core-1.0.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/core-1.0.0-1.x86_64.rpm
+			if [ -f ../package/centos/starcore-1.1.0-1.x86_64.rpm ];then
+				rpm -ihv ../package/centos/starcore-1.1.0-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/starcore/raw/master/core-1.0.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/core-1.0.0-1.x86_64.rpm
+				wget -P ../package/centos/ https://github.com/wfnex/starcore/raw/master/starcore-1.1.0-1.x86_64.rpm
+				rpm -ihv ../package/centos/starcore-1.1.0-1.x86_64.rpm
 			fi
 		fi
 		#check once
