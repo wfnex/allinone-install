@@ -5,6 +5,8 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+source ./version.sh
+
 help()
 {
 echo ===============================================================================
@@ -46,36 +48,36 @@ function install_rpm() {
 	check_os
 	if [ $DISTRIB_ID == "CentOS" ]; then
 		#check stardlls
-		if [ -d /opt/stardlls ];then
+		if [ -d /opt/staros.xyz/stardlls ];then
 			echo Stardlls check!
 		else
-			if [ -f ../package/centos/stardlls-1.0.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/stardlls-1.0.0-1.x86_64.rpm
+			if [ -f ../package/centos/stardlls-$STARDLLS_VERSION-1.x86_64.rpm ];then
+				rpm -ihv ../package/centos/stardlls-$STARDLLS_VERSION-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/stardlls/raw/master/stardlls-1.0.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/stardlls-1.0.0-1.x86_64.rpm
+				wget -P ../package/centos/ https://github.com/wfnex/stardlls/raw/master/stardlls-$STARDLLS_VERSION-1.x86_64.rpm
+				rpm -ihv ../package/centos/stardlls-$STARDLLS_VERSION-1.x86_64.rpm
 			fi
 		fi
 		#check dipc
-		if [ -d /opt/dipc ];then
+		if [ -d /opt/staros.xyz/dipc ];then
 			echo DIPC check!
 		else
-			if [ -f ../package/centos/dipc-1.2.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/dipc-1.2.0-1.x86_64.rpm
+			if [ -f ../package/centos/dipc-$DIPC_VERSION-1.x86_64.rpm ];then
+				rpm -ihv ../package/centos/dipc-$DIPC_VERSION-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/DIPC/raw/master/dipc-1.2.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/dipc-1.2.0-1.x86_64.rpm
+				wget -P ../package/centos/ https://github.com/wfnex/DIPC/raw/master/dipc-$DIPC_VERSION-1.x86_64.rpm
+				rpm -ihv ../package/centos/dipc-$DIPC_VERSION-1.x86_64.rpm
 			fi
 		fi
 		#check core
-		if [ -d /opt/starcore ];then
+		if [ -d /opt/staros.xyz/starcore ];then
 			echo StarCore check!
 		else
-			if [ -f ../package/centos/starcore-1.1.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/starcore-1.1.0-1.x86_64.rpm
+			if [ -f ../package/centos/starcore-$STARCORE_VERSION-1.x86_64.rpm ];then
+				rpm -ihv ../package/centos/starcore-$STARCORE_VERSION-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/starcore/raw/master/starcore-1.1.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/starcore-1.1.0-1.x86_64.rpm
+				wget -P ../package/centos/ https://github.com/wfnex/starcore/raw/master/starcore-$STARCORE_VERSION-1.x86_64.rpm
+				rpm -ihv ../package/centos/starcore-$STARCORE_VERSION-1.x86_64.rpm
 			fi
 		fi
 	else
@@ -87,7 +89,7 @@ function uninstall_rpm() {
 	echo uninstall platform will cause application not avaliable, are you sure want uninstall platform?
 	read -s -n1 -p "Press any key to continue ..."
 	echo "\n"
-	rpm -e core --nodeps
+	rpm -e starcore --nodeps
 	rpm -e dipc --nodeps
 	rpm -e stardlls --nodeps
 }
