@@ -82,11 +82,11 @@ function install_rpm() {
 		if [ -d /opt/staros.xyz/starvpp ];then
 			echo StarVPP check!
 		else
-			if [ -f ../package/centos/starvpp-1.0.0-1.x86_64.rpm ];then
-				rpm -ihv ../package/centos/starvpp-1.0.0-1.x86_64.rpm
+			if [ -f ../package/centos/starvpp-$STARVPP_VERSION-1.x86_64.rpm ];then
+				rpm -ihv ../package/centos/starvpp-$STARVPP_VERSION-1.x86_64.rpm
 			else
-				wget -P ../package/centos/ https://github.com/wfnex/starvpp/raw/master/starvpp-1.0.0-1.x86_64.rpm
-				rpm -ihv ../package/centos/starvpp-1.0.0-1.x86_64.rpm
+				wget -P ../package/centos/ https://github.com/wfnex/starvpp/raw/master/starvpp-$STARVPP_VERSION-1.x86_64.rpm
+				rpm -ihv ../package/centos/starvpp-$STARVPP_VERSION-1.x86_64.rpm
 			fi
 		fi
 	else
