@@ -79,6 +79,37 @@ function install_rpm() {
 	fi
 }
 
+function get_rpm() {
+	#check stardlls
+	if [ -f ../package/centos/stardlls-$STARDLLS_VERSION-1.x86_64.rpm ];then
+		echo "check"
+	else
+		wget -P ../package/centos/ https://github.com/wfnex/stardlls/raw/master/stardlls-$STARDLLS_VERSION-1.x86_64.rpm
+	fi
+	if [ -f ../package/centos/protocol-$PROTOCOL_VERSION-1.x86_64.rpm ];then
+		echo "check"
+	else
+		wget -P ../package/centos/ https://github.com/wfnex/protocol/raw/master/protocol-$PROTOCOL_VERSION-1.x86_64.rpm
+	fi
+	if [ -f ../package/centos/starlang-$STARLANG_VERSION-1.x86_64.rpm ];then
+		echo "check"
+	else
+		wget -P ../package/centos/ https://github.com/wfnex/starlang/raw/master/starlang-$STARLANG_VERSION-1.x86_64.rpm
+	fi
+	#check dipc
+	if [ -f ../package/centos/dipc-$DIPC_VERSION-1.x86_64.rpm ];then
+		echo "check"
+	else
+		wget -P ../package/centos/ https://github.com/wfnex/DIPC/raw/master/dipc-$DIPC_VERSION-1.x86_64.rpm
+	fi
+	#check core
+	if [ -f ../package/centos/starcore-$STARCORE_VERSION-1.x86_64.rpm ];then
+		echo "check"
+	else
+		wget -P ../package/centos/ https://github.com/wfnex/starcore/raw/master/starcore-$STARCORE_VERSION-1.x86_64.rpm
+	fi
+}
+
 function uninstall_rpm() {
 	echo uninstall platform will cause application not avaliable, are you sure want uninstall platform?
 	read -s -n1 -p "Press any key to continue ..."
@@ -90,7 +121,9 @@ function uninstall_rpm() {
 	rpm -e stardlls --nodeps
 }
 
-
+if [ "$1" == "get" ]
+then
+	get_rpm
 if [ "$1" == "install" ]
 then
 	install_rpm
